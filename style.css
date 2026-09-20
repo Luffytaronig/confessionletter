@@ -895,3 +895,377 @@ body.dimmed::before {
   outline: 2px solid var(--deep-rose);
   outline-offset: 3px;
 }
+/* FIX FOR HIDDEN ELEMENTS */
+[hidden] {
+    display: none !important;
+}
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+/* =========================================================
+   FINAL SIZE & LAYOUT — ALL PAGES
+   ========================================================= */
+
+/* =========================================================
+   PAGE 1 — FLOWERS + TEDDY
+   ========================================================= */
+
+.scene-row {
+    transform: scale(1.12);
+    transform-origin: center bottom;
+    margin-bottom: 35px;
+}
+
+.bouquet {
+    transform: scale(1.10);
+    transform-origin: bottom center;
+}
+
+.teddy {
+    width: clamp(170px, 25vw, 230px);
+}
+
+.page-title {
+    font-size: clamp(2rem, 5.5vw, 3rem);
+}
+
+.page-subtitle {
+    font-size: clamp(1.3rem, 3.4vw, 1.7rem);
+}
+
+.glow-btn {
+    padding: 17px 38px;
+    font-size: 1.15rem;
+}
+
+
+/* =========================================================
+   PAGE 2 — FLOWER REVEAL
+   ========================================================= */
+
+.bouquet-reveal {
+    height: 300px;
+    margin-bottom: 25px;
+}
+
+.reveal-flower {
+    width: 105px;
+    height: 225px;
+}
+
+.reveal-flower.reveal-small {
+    width: 80px;
+    height: 175px;
+}
+
+.reveal-line {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.reveal-line.line-2 {
+    font-size: clamp(1.15rem, 3vw, 1.4rem);
+}
+
+#moreBtn {
+    padding: 17px 42px;
+    font-size: 1.15rem;
+}
+
+
+/* =========================================================
+   PAGE 3 — ENVELOPE
+   ========================================================= */
+
+.envelope-caption {
+    font-size: 2rem;
+    margin-bottom: 0.3em;
+}
+
+.envelope-decor {
+    font-size: 1.5rem;
+    margin-bottom: 1.5em;
+}
+
+.envelope {
+    width: min(80vw, 520px);
+    height: min(56vw, 300px);
+}
+
+.wax-seal {
+    width: 58px;
+    height: 58px;
+}
+
+.heart-svg {
+    width: 28px;
+    height: 28px;
+}
+
+.envelope-hint {
+    font-size: 1.35rem;
+    bottom: -42px;
+}
+
+
+/* =========================================================
+   PAGE 4 — LOVE LETTER
+   ========================================================= */
+
+.page-letter {
+    padding-top: 25px;
+}
+
+.letter-row {
+    gap: clamp(20px, 4vw, 55px);
+}
+
+.letter {
+    width: min(88vw, 680px);
+}
+
+.letter-paper {
+    padding: 40px 36px 35px;
+    max-height: 76vh;
+}
+
+.letter-body {
+    font-size: clamp(1.3rem, 2.6vw, 1.65rem);
+    line-height: 1.75;
+}
+
+.teddy-wrap-small .teddy {
+    width: clamp(150px, 20vw, 220px);
+}
+
+
+/* =========================================================
+   PAGE 5 — QUESTION
+   ========================================================= */
+
+.question-lead {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+.question-main {
+    font-size: clamp(2.1rem, 5.8vw, 3.3rem);
+}
+
+.question-buttons {
+    gap: 25px;
+}
+
+.answer-btn {
+    font-size: 1.15rem;
+    padding: 17px 38px;
+}
+
+.response {
+    margin-top: 2em;
+}
+
+.response-big {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+}
+
+.response-line {
+    font-size: 1.65rem;
+}
+
+.response-line.small {
+    font-size: 1.35rem;
+}
+
+
+/* =========================================================
+   YES RESPONSE
+   ========================================================= */
+
+#yesResponse {
+    transform: scale(1.08);
+}
+
+#yesResponse .response-big {
+    font-size: clamp(3rem, 7vw, 4.5rem);
+}
+
+
+/* =========================================================
+   TIME RESPONSE
+   ========================================================= */
+
+#timeResponse {
+    transform: scale(1.08);
+}
+
+#timeResponse .response-line {
+    font-size: clamp(1.6rem, 3.5vw, 2rem);
+}
+
+
+/* =========================================================
+   DESKTOP — EXTRA BALANCED SIZE
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+    .page {
+        padding: 35px 30px;
+    }
+
+    .scene-row {
+        transform: scale(1.15);
+        margin-bottom: 45px;
+    }
+
+    .envelope {
+        width: 520px;
+        height: 300px;
+    }
+
+    .letter {
+        width: 680px;
+    }
+
+    .letter-paper {
+        max-height: 78vh;
+    }
+
+    .letter-body {
+        font-size: 1.55rem;
+    }
+
+    .teddy-wrap-small .teddy {
+        width: 220px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE — KEEP EVERYTHING FITTING
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .scene-row {
+        transform: scale(1.03);
+        margin-bottom: 25px;
+    }
+
+    .bouquet {
+        transform: scale(1.03);
+    }
+
+    .teddy {
+        width: clamp(140px, 38vw, 180px);
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .page-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .envelope-caption {
+        font-size: 1.6rem;
+    }
+
+    .envelope {
+        width: min(88vw, 420px);
+        height: min(58vw, 245px);
+    }
+
+    .envelope-decor {
+        font-size: 1.2rem;
+    }
+
+    .letter {
+        width: 94vw;
+    }
+
+    .letter-paper {
+        padding: 28px 22px 25px;
+        max-height: 65vh;
+    }
+
+    .letter-body {
+        font-size: 1.15rem;
+        line-height: 1.65;
+    }
+
+    .teddy-wrap-small .teddy {
+        width: 150px;
+    }
+
+    .question-main {
+        font-size: 2rem;
+    }
+
+    .answer-btn {
+        font-size: 1rem;
+        padding: 14px 28px;
+    }
+
+    #yesResponse,
+    #timeResponse {
+        transform: scale(1.02);
+    }
+
+    .response-big {
+        font-size: 2.8rem;
+    }
+
+    .response-line {
+        font-size: 1.3rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .scene-row {
+        transform: scale(0.98);
+    }
+
+    .bouquet {
+        transform: scale(0.95);
+    }
+
+    .envelope {
+        width: 88vw;
+        height: 190px;
+    }
+
+    .letter-paper {
+        max-height: 60vh;
+        padding: 22px 17px;
+    }
+
+    .letter-body {
+        font-size: 1rem;
+    }
+
+    .question-main {
+        font-size: 1.7rem;
+    }
+}

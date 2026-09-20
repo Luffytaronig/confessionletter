@@ -1267,5 +1267,9 @@ body {
 
     .question-main {
         font-size: 1.7rem;
+       /* FIX: hidden pages must really stay hidden */
+.page[hidden] {
+  display: none !important;
+}
     }
 }

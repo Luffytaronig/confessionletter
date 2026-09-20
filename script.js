@@ -236,12 +236,29 @@ function spawnScatterPetals(originEl) {
    PAGE TRANSITIONS
    ========================================================= */
 function goToPage(fromEl, toEl) {
-  fromEl.classList.add('leaving');
+  if (!fromEl || !toEl) {
+    console.error("Page transition failed:", fromEl, toEl);
+    return;
+  }
+
+  console.log(`Going from #${fromEl.id} to #${toEl.id}`);
+
+  fromEl.classList.add("leaving");
+
   setTimeout(() => {
     fromEl.hidden = true;
-    fromEl.classList.remove('leaving');
+    fromEl.style.display = "none";
+    fromEl.classList.remove("leaving");
+
     toEl.hidden = false;
-    toEl.dispatchEvent(new CustomEvent('page:shown'));
+    toEl.style.display = "flex";
+    toEl.classList.add("page-entering");
+
+    requestAnimationFrame(() => {
+      toEl.classList.remove("page-entering");
+    });
+
+    toEl.dispatchEvent(new CustomEvent("page:shown"));
   }, 850);
 }
 
@@ -335,12 +352,20 @@ setTimeout(() => {
   }
 }, 20000);
 
-// Confession button -> page 2
-const confessBtn = document.getElementById('confessBtn');
-confessBtn.addEventListener('click', () => {
-  spawnRisingHearts(confessBtn, 6);
-  goToPage(page1, page2);
-});
+const confessBtn = document.getElementById("confessBtn");
+
+if (confessBtn) {
+  confessBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    console.log("CONFESSION BUTTON CLICKED");
+
+    spawnRisingHearts(confessBtn, 6);
+    goToPage(page1, page2);
+  });
+} else {
+  console.error("Could not find #confessBtn");
+}
 
 /* =========================================================
    PAGE 2 — FLOWER REVEAL SEQUENCE
@@ -434,9 +459,14 @@ function startLetter() {
 
       setTimeout(step, speed);
     } else {
-      cursor.remove();
-      setTimeout(() => goToPage(page4, page5), 1400);
-    }
+  cursor.remove();
+
+  const letterNextBtn = document.getElementById("letterNextBtn");
+
+  setTimeout(() => {
+    letterNextBtn.hidden = false;
+  }, 700);
+}
   }
   step();
 }
@@ -461,16 +491,28 @@ const yesResponse = document.getElementById('yesResponse');
 const timeResponse = document.getElementById('timeResponse');
 
 yesBtn.addEventListener('click', () => {
+
   questionButtons.hidden = true;
-  document.getElementById('questionMain').hidden = true;
-  document.getElementById('questionLead').hidden = true;
+  questionMain.hidden = true;
+  questionLead.hidden = true;
+
+  timeResponse.hidden = true;
   yesResponse.hidden = false;
+
+  spawnRisingHearts(yesBtn, 8);
   triggerFinale();
 });
 
+
 timeBtn.addEventListener('click', () => {
+
   questionButtons.hidden = true;
+  questionMain.hidden = true;
+  questionLead.hidden = true;
+
+  yesResponse.hidden = true;
   timeResponse.hidden = false;
+
   spawnRisingHearts(timeBtn, 3);
 });
 
@@ -531,3 +573,12 @@ function triggerFinale() {
    INIT
    ========================================================= */
 buildAmbient();
+
+const letterNextBtn = document.getElementById("letterNextBtn");
+
+if (letterNextBtn) {
+  letterNextBtn.addEventListener("click", () => {
+    spawnRisingHearts(letterNextBtn, 5);
+    goToPage(page4, page5);
+  });
+}

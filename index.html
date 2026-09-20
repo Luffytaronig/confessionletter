@@ -21,8 +21,6 @@
     <div class="bg-hearts" id="bgHearts"></div>
     <div class="petals" id="petals"></div>
   </div>
-
-  <!-- Music toggle -->
   <button class="music-toggle" id="musicToggle" aria-label="Play music" aria-pressed="false">
     <span class="music-icon" aria-hidden="true">&#9835;</span>
     <span class="music-notes" id="musicNotes" aria-hidden="true"></span>
@@ -31,18 +29,13 @@
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- shared floating tooltip for flower / easter-egg messages -->
   <div class="floating-tooltip" id="floatingTooltip" role="status" aria-live="polite"></div>
 
-  <!-- ============================================================
-       PAGE 1 — THE SECRET GARDEN
-       ============================================================ -->
   <section class="page" id="page1">
     <div class="garden-glow" aria-hidden="true"></div>
     <div class="grass" aria-hidden="true"></div>
 
     <div class="scene-row">
-      <!-- Bouquet of interactive flowers -->
       <div class="bouquet" id="bouquet1">
         <div class="babys-breath bb-a" aria-hidden="true"></div>
         <div class="babys-breath bb-b" aria-hidden="true"></div>
@@ -262,7 +255,9 @@
           </svg>
         </div>
       </div>
-    </div>
+      <button class="glow-btn" id="letterNextBtn" hidden>
+      I've read it 💌
+    </button>
   </section>
 
   <!-- ============================================================
